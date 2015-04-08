@@ -248,3 +248,30 @@ div#page1 {
     padding: 0px 0px;
     padding-bottom: 0px;
 }
+div#myPopup {
+    background: rgba(53, 147, 201, 0.6);
+}
+div#myPopup p {
+    color: rgb(100, 75, 143);
+}
+div#myPopuptelephone {
+    background: rgba(53, 147, 201, 0.6);
+}
+div#myPopuptelephone a {
+    color: rgb(255, 255, 255);
+    font-size: 12px !important;
+    font-weight: 100 !important;
+    text-shadow: none !important;
+    margin: 5px 5px;
+}
+.findlinks{
+    color: rgb(255, 255, 255) !important;
+    font-size: 12px !important;
+    font-weight: 100 !important;
+    text-shadow: none !important;
+    margin: 5px 5px !important;
+    padding: 0px !important;
+}
+.findlinks p{
+    color: rgb(255, 255, 255) !important;
+}

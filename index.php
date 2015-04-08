@@ -129,65 +129,85 @@
 				    </ul>
 			    </div>
 			    <!-- Jssor Slider End -->
-				<fieldset class="ui-grid-b" data-theme="<?php echo $theme ?>">
-					<!-- OVDJE SE UPISUJE BROJ TELEFONA KOJI TREBA POZVATI  -->
-					<div class="ui-block-a"><a class="ui-btn ui-icon-phone ui-btn-icon-top buttons-radius" href="tel:<?php echo $telephone ?>"> </a></div>
-					<!-- ovdje se upisuje grad i adresa iz koje  -->
-					<div class="ui-block-b" id="findUS">
-						<script>
-							var ua = navigator.userAgent;
-							if(/Android|webOS|Opera Mini/i.test(navigator.userAgent) ) {
-								console.log("Android uslo");
-								var prostordugme=document.getElementById('findUS');
-								var dugme= document.createElement('a');
-								dugme.setAttribute('class', "ui-btn ui-icon-location ui-btn-icon-top buttons-radius");
-								dugme.setAttribute('href',"geo:0,0?q=<?php echo $adresa; ?>,<?php echo $grad; ?>,<?php echo $skracenica; ?>");
-								dugme.innerHTML=" ";
-								prostordugme.appendChild(dugme);
-							}
-							else if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){
-								console.log("Iphone ");
-								var prostordugme=document.getElementById('findUS');
-								var dugme= document.createElement('a');
-								dugme.setAttribute('class', "ui-btn ui-icon-location ui-btn-icon-top buttons-radius");
-								dugme.setAttribute('href',"http://maps.google.com/?daddr=<?php echo $adresa; ?>,<?php echo $grad; ?>,<?php echo $skracenica; ?> ");
-								dugme.innerHTML=" ";
-								prostordugme.appendChild(dugme);
-							}
-							else if (ua.indexOf("BlackBerry") >= 0) {
+              <fieldset class="ui-grid-b" data-theme="<?php echo $theme ?>">
+                  <!-- OVDJE SE UPISUJE BROJ TELEFONA KOJI TREBA POZVATI  -->
+                  <div class="ui-block-a"><a href="#myPopuptelephone" class="callfindmail ui-btn buttons-radius" data-rel="popup" data-transition="flow"><img src="img/poziv.png"></a></div>
+                  <!-- ovdje se upisuje grad i adresa iz koje  -->
+                  <div class="ui-block-b" id="findUS"><a href="#myPopup" class="callfindmail ui-btn buttons-radius" data-rel="popup" data-transition="flow"><img src='img/lokacija.png'></a></div>
+                  <div class="ui-block-c"><a href="#contactform" class="callfindmail ui-btn  buttons-radius" data-transition="<?php echo $transitionefect ?>" data-direction="reverse"><img src="img/mail.png" alt=""></a></div>
+              </fieldset>
+              <!-- pop up for telefon -->
+              <div data-role="popup" id="myPopuptelephone" class="ui-content">
+                  <?php
+                  for ($i=0; $i <$companynumber ; $i++) {
+                      ?>
+                      <a href='tel:<?php echo $telephone[$i] ?>' class="ui-btn"><?php echo $nazivlokacije[$i] ?></a>
+                  <?php
+                  }
+                  ?>
+              </div>
+              <!-- pop up for telefon -->
 
-									console.log("Blakberu je prosao ")
-									var prostordugme=document.getElementById('findUS');
-									var dugme= document.createElement('a');
-									dugme.setAttribute('class', "ui-btn ui-icon-location ui-btn-icon-top buttons-radius");
-									dugme.setAttribute('href',"javascript:blackberry.launch.newMap({'address':{'address1':'<?php echo $adresa; ?>,<?php echo $grad; ?>,<?php echo $skracenica; ?>'}});");
-									dugme.innerHTML=" ";
-									prostordugme.appendChild(dugme);
-									}		
-							else {
-								console.log("nije nigdje uslo default ")
-								var prostordugme=document.getElementById('findUS');
-								var dugme= document.createElement('a');
-								dugme.setAttribute('class', "ui-btn ui-icon-location ui-btn-icon-top buttons-radius");
-								dugme.setAttribute('href',"geo:0,0?q=<?php echo $adresa; ?>,<?php echo $grad; ?>,<?php echo $skracenica; ?>");
-								dugme.innerHTML=" ";
-								prostordugme.appendChild(dugme);
-							}
+              <!-- POPUP FOR FIND US -->
+              <div data-role="popup" id="myPopup" class="ui-content">
+                  <div id="multiadress">
+                  </div>
+                  <?php
+                  for ($i=0; $i<$companynumber ; $i++) {
+                      ?>
+                      <script>
+                          var ua = navigator.userAgent;
+                          if(/Android|webOS|Opera Mini/i.test(navigator.userAgent) ) {
+                              console.log("Android uslo");
+                              var prostordugme=document.getElementById('multiadress');
+                              var dugme= document.createElement('a');
+                              dugme.setAttribute('class', "ui-btn findlinks");
+                              dugme.setAttribute('href',"geo:0,0?q=<?php echo $adresa[$i]; ?>,<?php echo $grad[$i]; ?>,<?php echo $skracenica[$i]; ?>");
+                              dugme.innerHTML="<p ><?php echo $nazivlokacije[$i] ?></p>";
+                              prostordugme.appendChild(dugme);
+                          }
 
-							
+                          else if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){
+                              console.log("Iphone ");
+                              var prostordugme=document.getElementById('multiadress');
+                              var dugme= document.createElement('a');
+                              dugme.setAttribute('class', "ui-btn findlinks");
+                              dugme.setAttribute('href',"http://maps.google.com/?daddr=<?php echo $adresa[$i]; ?>,<?php echo $grad[$i]; ?>,<?php echo $skracenica[$i]; ?> ");
+                              dugme.innerHTML="<p><?php echo $nazivlokacije[$i] ?></p>";
+                              prostordugme.appendChild(dugme);
+                          }
 
-							// if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-							// // some code..
-							// }
+                          else if (ua.indexOf("BlackBerry") >= 0)
+                          {
+                              console.log("Blakberu je prosao ");
+                              console.log("Blakberu je prosao ")
+                              var prostordugme=document.getElementById('multiadress');
+                              var dugme= document.createElement('a');
+                              dugme.setAttribute('class', "ui-btn findlinks");
+                              dugme.setAttribute('href',"javascript:blackberry.launch.newMap({'address':{'address1':'<?php echo $adresa[$i]; ?>,<?php echo $grad[$i]; ?>,<?php echo $skracenica[$i]; ?>'}});");
+                              dugme.innerHTML="<p ><?php echo $nazivlokacije[$i] ?></p>";
+                              prostordugme.appendChild(dugme);
+                          }
 
-						</script>
-						
-						
+                          else {
+                              console.log("nije nigdje uslo default ")
+                              var prostordugme=document.getElementById('multiadress');
+                              var dugme= document.createElement('a');
+                              dugme.setAttribute('class', "ui-btn findlinks");
+                              dugme.setAttribute('href',"geo:0,0?q=<?php echo $adresa[$i]; ?>,<?php echo $grad[$i]; ?>,<?php echo $skracenica[$i]; ?>");
+                              dugme.innerHTML="<p ><?php echo $nazivlokacije[$i] ?></p>";
+                              prostordugme.appendChild(dugme);
+                          }
 
-					</div>	
-					<div class="ui-block-c"><a class="ui-btn ui-icon-mail ui-btn-icon-top buttons-radius" href="#contactform" data-transition="<?php echo $transitionefect ?>"> </a></div>   
-				</fieldset>
-
+                          // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                          // // some code..
+                          // }
+                      </script>
+                  <?php
+                  }
+                  ?>
+              </div>
+              <!-- POPUP FOR FIND US -->
 
               <div class="ui-grid-solo" data-theme="<?php echo $theme ?>">
                   <div class="ui-block-a buttons-semir "><a class="ui-btn ui-icon-info ui-btn-icon-left buttons-radius" href="#page2" data-transition="<?php echo $transitionefect ?>">About Us</a>
