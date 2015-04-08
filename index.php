@@ -104,24 +104,24 @@
 			  	<div class="callbacks_container">
 				    <ul class="rslides" id="slider4">
 				      <li>
-				        <img src="img/slider-images/Slider1.jpg" alt="">
+				        <img src="img/slider-images/slider1.jpg" alt="">
 				        <!-- <p class="caption">This is a caption</p> -->
 				      </li>
 
 				      <li>
-				        <img src="img/slider-images/Slider2.jpg" alt="">
+				        <img src="img/slider-images/slider2.jpg" alt="">
 				        <!-- <p class="caption">The third caption</p> -->
 				      </li>
                         <li>
-                            <img src="img/slider-images/Slider3.jpg" alt="">
+                            <img src="img/slider-images/slider3.jpg" alt="">
                             <!-- <p class="caption">The third caption</p> -->
                         </li>
                         <li>
-                            <img src="img/slider-images/Slider4.jpg" alt="">
+                            <img src="img/slider-images/slider4.jpg" alt="">
                             <!-- <p class="caption">The third caption</p> -->
                         </li>
                         <li>
-                            <img src="img/slider-images/Slider5.jpg" alt="">
+                            <img src="img/slider-images/slider5.jpg" alt="">
                             <!-- <p class="caption">The third caption</p> -->
                         </li>
 
